@@ -9,7 +9,6 @@ public class ResponseHandler
         response.ResponseData = ex.Message;
         return response;
     }
-
     public static ApiResponse GetAppResponse(ResponseType type, object? contract)
     {
         ApiResponse response; 
