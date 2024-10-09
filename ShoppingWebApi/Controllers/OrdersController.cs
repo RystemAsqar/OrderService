@@ -22,21 +22,23 @@ public class OrdersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Order>>> GetAllOrders()
+    public async Task<ActionResult<IEnumerable<OrderDto>>> GetAllOrders()
     {
         var orders = await _orderRepository.GetAllAsync();
-        return Ok(orders);
+        var orderDtos = _mapper.Map<IEnumerable<OrderDto>>(orders); // Map Order -> OrderDto
+        return Ok(orderDtos);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Order>> GetOrderById(int id)
+    public async Task<ActionResult<OrderDto>> GetOrderById(int id)
     {
         var order = await _orderRepository.GetByIdAsync(id);
         if (order == null)
         {
             return NotFound();
         }
-        return Ok(order);
+        var orderDto = _mapper.Map<OrderDto>(order); // Map Order -> OrderDto
+        return Ok(orderDto);
     }
 
     [HttpPost]
