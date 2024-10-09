@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using ShoppingWebApi.EFCore;
+using ShoppingWebApi.Data;
 
 #nullable disable
 
 namespace ShoppingWebApi.Migrations
 {
-    [DbContext(typeof(EF_DataContext))]
-    [Migration("20240930184148_Initial")]
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20241009164122_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -24,71 +24,57 @@ namespace ShoppingWebApi.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ShoppingWebApi.EFCore.Order", b =>
+            modelBuilder.Entity("ShoppingWebApi.Models.Order", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Productid")
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("address")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.HasKey("Id");
 
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.HasIndex("ProductId");
 
-                    b.Property<string>("phone")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("product_id")
-                        .HasColumnType("integer");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("Productid");
-
-                    b.ToTable("order");
+                    b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("ShoppingWebApi.EFCore.Product", b =>
+            modelBuilder.Entity("ShoppingWebApi.Models.Product", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("brand")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<decimal>("price")
+                    b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("size")
-                        .HasColumnType("integer");
+                    b.HasKey("Id");
 
-                    b.HasKey("id");
-
-                    b.ToTable("product");
+                    b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ShoppingWebApi.EFCore.Order", b =>
+            modelBuilder.Entity("ShoppingWebApi.Models.Order", b =>
                 {
-                    b.HasOne("ShoppingWebApi.EFCore.Product", "Product")
+                    b.HasOne("ShoppingWebApi.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("Productid")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

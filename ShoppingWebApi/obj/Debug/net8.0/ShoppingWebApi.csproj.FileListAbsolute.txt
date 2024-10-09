@@ -260,3 +260,5 @@
 /Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Security.Cryptography.ProtectedData.dll
 /Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
 /Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/obj/Debug/net8.0/ShoppingWebApi.sourcelink.json
+/Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/bin/Debug/net8.0/AutoMapper.dll
+/Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
