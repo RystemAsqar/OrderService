@@ -5,20 +5,28 @@ using ShoppingWebApi.Data;
 using ShoppingWebApi.DTOs;
 using ShoppingWebApi.Models;
 using ShoppingWebApi.Repositories;
+using ShoppingWebApi.Services.Interface;
 
 [Route("api/[controller]")]
 [ApiController]
 public class OrdersController : ControllerBase
 {
     private readonly IOrderRepository _orderRepository;
-    private readonly IMapper _mapper;  // AutoMapper instance
+    private readonly IMapper _mapper;  
     private readonly ApplicationDbContext _context;
+    private readonly IMessagePublisherService _messagePublisher;
+    
 
-    public OrdersController(IOrderRepository orderRepository, IMapper mapper, ApplicationDbContext context)
+    public OrdersController(
+        IOrderRepository orderRepository, 
+        IMapper mapper, 
+        ApplicationDbContext context, 
+        IMessagePublisherService messagePublisher)
     {
         _orderRepository = orderRepository;
         _mapper = mapper;
         _context = context;
+        _messagePublisher = messagePublisher;
     }
 
     [HttpGet]
@@ -57,6 +65,7 @@ public class OrdersController : ControllerBase
             return BadRequest(new { message = "Invalid ProductId" });
         }
         await _orderRepository.CreateAsync(order);
+        await _messagePublisher.SentMessage(order.Id, order.Address);
         return CreatedAtAction(nameof(GetOrderById), new { id = order.Id }, order);
     }
 

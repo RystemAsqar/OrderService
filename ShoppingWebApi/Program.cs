@@ -1,6 +1,9 @@
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using ShoppingWebApi.Data;
 using ShoppingWebApi.Repositories;
+using ShoppingWebApi.Services;
+using ShoppingWebApi.Services.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,10 +18,26 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<OrderRepository>();
+builder.Services.AddScoped<IMessagePublisherService, MessagePublisherService>();
+
+
+// Register MassTransit 
+builder.Services.AddMassTransit( conf => 
+{
+    conf.UsingRabbitMq((ctx, cfg) => 
+    {
+        cfg.Host("localhost", "/", host =>
+        {
+            host.Username("rystemasqar");
+            host.Password("0055");
+        });        
+    });
+});
 
 // Configure Entity Framework with Npgsql and PostgreSQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Ef_Postgres_Db")));
+
 
 var app = builder.Build();
 

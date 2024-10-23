@@ -262,3 +262,7 @@
 /Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/obj/Debug/net8.0/ShoppingWebApi.sourcelink.json
 /Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/bin/Debug/net8.0/AutoMapper.dll
 /Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/bin/Debug/net8.0/MassTransit.dll
+/Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/bin/Debug/net8.0/MassTransit.Abstractions.dll
+/Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/bin/Debug/net8.0/MassTransit.RabbitMqTransport.dll
+/Users/rystemasqar/Dev/ShoppingWebApi/ShoppingWebApi/bin/Debug/net8.0/RabbitMQ.Client.dll
