@@ -21,7 +21,6 @@ namespace DeliveryService.Api.Services
             var message = context.Message;
             _logger.LogInformation($"Received order message: {message.OrderId}, {message.CustomerName}, {message.OrderAddress}");
 
-            // Сохранение заказа в базе данных
             var deliveryOrder = new DeliveryOrder
             {
                 OrderId = message.OrderId,
