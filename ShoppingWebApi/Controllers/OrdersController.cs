@@ -39,7 +39,7 @@ public class OrdersController : ControllerBase
     public async Task<ActionResult<IEnumerable<OrderDto>>> GetAllOrders()
     {
         var orders = await _orderRepository.GetAllAsync();
-        var orderDtos = _mapper.Map<IEnumerable<OrderDto>>(orders); // Map Order -> OrderDto
+        var orderDtos = _mapper.Map<IEnumerable<OrderDto>>(orders); 
         return Ok(orderDtos);
     }
 
@@ -51,7 +51,7 @@ public class OrdersController : ControllerBase
         {
             return NotFound();
         }
-        var orderDto = _mapper.Map<OrderDto>(order); // Map Order -> OrderDto
+        var orderDto = _mapper.Map<OrderDto>(order); 
         return Ok(orderDto);
     }
 
