@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingWebApi", "ShoppingW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{4EA8069D-31A8-43B3-9FCF-B8F38D909492}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.Api", "DeliveryService.Api\DeliveryService.Api.csproj", "{C63DF79E-0C8A-4D16-8F86-0C2AFCE7E310}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{4EA8069D-31A8-43B3-9FCF-B8F38D909492}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA8069D-31A8-43B3-9FCF-B8F38D909492}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EA8069D-31A8-43B3-9FCF-B8F38D909492}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C63DF79E-0C8A-4D16-8F86-0C2AFCE7E310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C63DF79E-0C8A-4D16-8F86-0C2AFCE7E310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C63DF79E-0C8A-4D16-8F86-0C2AFCE7E310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C63DF79E-0C8A-4D16-8F86-0C2AFCE7E310}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
