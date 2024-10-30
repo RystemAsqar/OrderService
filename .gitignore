@@ -1,0 +1,32 @@
+# Папки build-артефактов
+bin/
+obj/
+
+# Файлы конфигурации пользователя
+*.user
+*.rsuser
+*.suo
+
+# Лог файлы
+*.log
+
+# Конфигурации базы данных и секретные ключи
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+appsettings.Secrets.json
+
+# Файлы для Entity Framework Migrations
+**/Migrations/*Designer.cs
+**/Migrations/*Snapshot.cs
+
+# Entity Framework Core
+Migrations/
+*.mdf
+*.ldf
+
+# Rider
+.idea/
+
+# RabbitMQ и временные файлы
+*.pid
